@@ -31,19 +31,35 @@ class Main{
 //        System.out.println(uitkomst);
 
         Dobbelsteen dobbelsteen = new Dobbelsteen();
-        dobbelsteen.dobbelen();
+
+        int dobbelResultaat1 = dobbelsteen.dobbelen();
+        System.out.println("dobbelsteen 1: " + dobbelResultaat1);
+
+        int dobbelResultaat2 = dobbelsteen.dobbelen();
+        System.out.println("dobbelsteen 2: " + dobbelResultaat2);
+
+        int dobbelResultaat3 = dobbelsteen.dobbelen();
+        System.out.println("dobbelsteen 3: " + dobbelResultaat3);
+
+        int dobbelResultaat4 = dobbelsteen.dobbelen();
+        System.out.println("dobbelsteen 4: " + dobbelResultaat4);
+
+        int dobbelResultaat5 = dobbelsteen.dobbelen();
+        System.out.println("dobbelsteen 5: " + dobbelResultaat5);
 
     }
 }
 
 class Dobbelsteen{
 
-    void dobbelen(){
+    int dobbelen(){
         // create random object
         Random random = new Random();
 
-        // check next int value - let op: waarden die terug kunnen komen liggen tussen 0 - 5 (inclusief)!
-        System.out.println("Gedobbeld: " + random.nextInt(6));
+        int resultaat = random.nextInt(6);
+
+        //let op: waarden die terug kunnen komen liggen tussen 0 - 5 (inclusief)!
+        return (resultaat + 1);
     }
 
 }
