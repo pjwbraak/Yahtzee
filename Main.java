@@ -12,7 +12,6 @@ class Main {
         Dobbelsteen dobbelsteen = new Dobbelsteen();
         int[] resultatenDobbelen = new int[5];
         int[] vastgelegdeResultaten = new int[5];
-//        vastgelegdeResultaten[0] = 7;
         boolean doorspelen = true;
 
         while (doorspelen == true) {
@@ -23,7 +22,7 @@ class Main {
                     //dobbelen
                     for (int x = 0; x < 5; x++) {
                         resultatenDobbelen[x] = dobbelsteen.dobbelen();
-                        if(vastgelegdeResultaten[x] != 0){ //resultaat van dobbelen kan nooit 0 zijn, dus 0 in vastgelegdeResultaten betekent niet vastgelegd door speler
+                        if(vastgelegdeResultaten[x] != 0){
                             resultatenDobbelen[x] = vastgelegdeResultaten[x];
                         }
                         System.out.print(resultatenDobbelen[x] + "  ");
@@ -33,21 +32,78 @@ class Main {
                     //vastleggen?
                     Scanner scanner = new Scanner(System.in);
                     System.out.println("^");
-                    System.out.println("Dobbelsteen 1 vastleggen (j/n)?");
+                    System.out.println("Dobbelsteen 1 vastleggen (j)?");
                     switch(scanner.next()) {
                         case "j":
                             vastgelegdeResultaten[0] = resultatenDobbelen[0];
+                            System.out.println("Dobbelsteen 1 met cijfer: " + vastgelegdeResultaten[0] + " vastgelegd");
+                            break;
+                        default:
+                            System.out.println("Dobbelsteen 1 niet vastgelegd");
+                    }
+                    //hier de huidige nummers laten zien
+                    System.out.println("   ^");
+                    System.out.println("Dobbelsteen 2 vastleggen (j)?");
+                    switch(scanner.next()) {
+                        case "j":
+                            vastgelegdeResultaten[1] = resultatenDobbelen[1];
+                            System.out.println("Dobbelsteen 2 met cijfer: " + vastgelegdeResultaten[1] + " vastgelegd");
+                            break;
+                        default:
+                            System.out.println("Dobbelsteen 2 niet vastgelegd");
                     }
 
-                    System.out.println(resultatenDobbelen[0]);  //test of [0] op beide arrays gelijk zijn
-                    System.out.println(vastgelegdeResultaten[0]); //test
+                    //hier de huidige nummers laten zien
+                    System.out.println("     ^");
+                    System.out.println("Dobbelsteen 3 vastleggen (j)?");
+                    switch(scanner.next()) {
+                        case "j":
+                            vastgelegdeResultaten[2] = resultatenDobbelen[2];
+                            System.out.println("Dobbelsteen 3 met cijfer: " + vastgelegdeResultaten[2] + " vastgelegd");
+                            break;
+                        default:
+                            System.out.println("Dobbelsteen 3 niet vastgelegd");
+                    }
+
+                    //hier de huidige nummers laten zien
+                    System.out.println("       ^");
+                    System.out.println("Dobbelsteen 4 vastleggen (j)?");
+                    switch(scanner.next()) {
+                        case "j":
+                            vastgelegdeResultaten[3] = resultatenDobbelen[3];
+                            System.out.println("Dobbelsteen 4 met cijfer: " + vastgelegdeResultaten[3] + " vastgelegd");
+                            break;
+                        default:
+                            System.out.println("Dobbelsteen 4 niet vastgelegd");
+                    }
+
+                    //hier de huidige nummers laten zien
+                    System.out.println("         ^");
+                    System.out.println("Dobbelsteen 5 vastleggen (j)?");
+                    switch(scanner.next()) {
+                        case "j":
+                            vastgelegdeResultaten[4] = resultatenDobbelen[4];
+                            System.out.println("Dobbelsteen 5 met cijfer: " + vastgelegdeResultaten[4] + " vastgelegd");
+                            break;
+                        default:
+                            System.out.println("Dobbelsteen 5 niet vastgelegd");
+                    }
+
+                    System.out.println(" ");
+                    System.out.println("Vastgelegde dobbelstenen:");
+                    for(int x = 0; x < 5; x++){
+                        if(vastgelegdeResultaten[x] != 0){
+                            System.out.print(vastgelegdeResultaten[x] + "  ");
+                        }
+                    }
+
                     break;
 
                 case "s":
                     doorspelen = false;
             }
 
-        } //while loop eindigt hier
+        }
 
         System.out.println("Bedankt voor het spelen!");
     }
