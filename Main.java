@@ -4,49 +4,50 @@ import java.util.Random;
 import java.util.Scanner;
 
 class Main{
+
     public static void main(String[] args) {
-//        System.out.println("Welkom bij mijn spel");
-//        boolean doorspelen = true;
-//        while(doorspelen) {
-//            String input = toonMenu();
-//            switch(input) {
-//                case "a":
-//                    ietsRandom();
-//                    break;
-//                case "q":
-//                    doorspelen = false;
-//            }
-//
-//        }
-//        System.out.println("Bedankt voor het spelen");
-//    }
-//    static String toonMenu() {
-//        System.out.println("Voer uw input in: a voor random of q voor quit");
-//        Scanner scanner = new Scanner(System.in);
-//        return scanner.next();
-//    }
-//    static void ietsRandom() {
-//        Random random = new Random();
-//        int uitkomst = random.nextInt(6);
-//        System.out.println(uitkomst);
+
+        System.out.println("Yahtzee!");
 
         Dobbelsteen dobbelsteen = new Dobbelsteen();
 
-        int dobbelResultaat1 = dobbelsteen.dobbelen();
-        System.out.println("dobbelsteen 1: " + dobbelResultaat1);
+        boolean doorspelen = true;
 
-        int dobbelResultaat2 = dobbelsteen.dobbelen();
-        System.out.println("dobbelsteen 2: " + dobbelResultaat2);
+        while(doorspelen = true){
+            String input = toonMenu();
+            switch(input){
+                case "d":
 
-        int dobbelResultaat3 = dobbelsteen.dobbelen();
-        System.out.println("dobbelsteen 3: " + dobbelResultaat3);
+                    int dobbelResultaat1 = dobbelsteen.dobbelen();
+                    System.out.println("dobbelsteen 1: " + dobbelResultaat1);
 
-        int dobbelResultaat4 = dobbelsteen.dobbelen();
-        System.out.println("dobbelsteen 4: " + dobbelResultaat4);
+                    int dobbelResultaat2 = dobbelsteen.dobbelen();
+                    System.out.println("dobbelsteen 2: " + dobbelResultaat2);
 
-        int dobbelResultaat5 = dobbelsteen.dobbelen();
-        System.out.println("dobbelsteen 5: " + dobbelResultaat5);
+                    int dobbelResultaat3 = dobbelsteen.dobbelen();
+                    System.out.println("dobbelsteen 3: " + dobbelResultaat3);
 
+                    int dobbelResultaat4 = dobbelsteen.dobbelen();
+                    System.out.println("dobbelsteen 4: " + dobbelResultaat4);
+
+                    int dobbelResultaat5 = dobbelsteen.dobbelen();
+                    System.out.println("dobbelsteen 5: " + dobbelResultaat5);
+
+                    break;
+                case "s":
+                    doorspelen = false;
+            }
+
+        } //while loop eindigt hier
+
+        System.out.println("Bedankt voor het spelen");
+
+    }
+
+    static String toonMenu() {
+        System.out.println("Voer uw input in: d om te dobbelen of s om te stoppen");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
     }
 }
 
