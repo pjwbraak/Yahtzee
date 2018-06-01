@@ -65,6 +65,7 @@ public class Yahtzee {
             printVastgelegdeResultaten();
             System.out.println("1: Verder dobbelen met niet-vastgelegde dobbelstenen | 2: spel stoppen");
 
+
             dobbelenNaEersteKeer(); //test
         }
 
@@ -80,14 +81,19 @@ public class Yahtzee {
 
     public void dobbelenNaEersteKeer(){
         int i = 0;
+
         for (int x = 0; x < 5; x++) {
             resultatenDobbelen[x] = dobbelsteen.dobbelen();
-            if(vastgelegdeResultaten[x] > 0){
+        }
+
+        for (int x = 0; x < 5; x++) {
+            if (vastgelegdeResultaten[x] > 0) {
                 resultatenDobbelen[i] = vastgelegdeResultaten[x];
                 i++;
             }
             System.out.print(resultatenDobbelen[x] + "  ");
         }
+        System.out.println();
     }
 
     public void printResultatenDobbelen(){
