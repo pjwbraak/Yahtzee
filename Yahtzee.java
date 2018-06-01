@@ -33,30 +33,39 @@ public class Yahtzee {
             }
         }
 
-        while (doorspelen) {
-            for (int x = 0; x < 5; x++) {
-                boolean vastleggenKeuzeGemaakt = false;
-                System.out.println("Dobbelsteen " + (x + 1) + " met waarde: " + resultatenDobbelen[x] + " vastleggen? 1: ja | 2: nee");
-                while(!vastleggenKeuzeGemaakt){
-                    int keuze = input.nextInt();
-                    if(keuze == 1){
-                        vastgelegdeResultaten[x] = resultatenDobbelen[x];
-                        System.out.println("Dobbelsteen " + (x + 1) + " met waarde: " + resultatenDobbelen[x] + " vastgelegd");
-                        System.out.println("Vastgelegd zijn: ");
-                        printVastgelegdeResultaten();
-                        vastleggenKeuzeGemaakt = true;
-                    }
-                    else if(keuze == 2){
-                        System.out.println("Dobbelsteen " + (x + 1) + " met waarde: " + resultatenDobbelen[x] + " NIET vastgelegd");
-                        System.out.println("Vastgelegd zijn: ");
-                        printVastgelegdeResultaten();
-                        vastleggenKeuzeGemaakt = true;
-                    } else {
-                        System.out.println("Ongeldige waarde! 1: vastleggen | 2: nee");
-                        continue;
+        while (doorspelen) {    //logic voor vastleggen van dobbelstenen in array vastGelegdeResultaten
+            int dobbelKeer = 1;
+            if(dobbelKeer < 4){
+                for (int x = 0; x < 5; x++) {
+                    boolean vastleggenKeuzeGemaakt = false;
+                    System.out.println("Dobbelsteen " + (x + 1) + " met waarde: " + resultatenDobbelen[x] + " vastleggen? 1: ja | 2: nee");
+                    while (!vastleggenKeuzeGemaakt) {
+                        int keuze = input.nextInt();
+                        if (keuze == 1) {
+                            vastgelegdeResultaten[x] = resultatenDobbelen[x];
+                            printResultatenDobbelen();
+                            System.out.println("Dobbelsteen " + (x + 1) + " met waarde: " + resultatenDobbelen[x] + " vastgelegd");
+                            printVastgelegdeResultaten();
+                            vastleggenKeuzeGemaakt = true;
+                        } else if (keuze == 2) {
+                            printResultatenDobbelen();
+                            System.out.println("Dobbelsteen " + (x + 1) + " met waarde: " + resultatenDobbelen[x] + " NIET vastgelegd");
+                            printVastgelegdeResultaten();
+                            vastleggenKeuzeGemaakt = true;
+                        } else {
+                            System.out.println("Ongeldige waarde! 1: vastleggen | 2: nee");
+                            continue;
+                        }
                     }
                 }
             }
+            dobbelKeer++;
+            System.out.println("==============================");
+            System.out.println(dobbelKeer + "e keer dobbelen deze beurt");
+            printVastgelegdeResultaten();
+            System.out.println("1: Verder dobbelen met niet-vastgelegde dobbelstenen | 2: spel stoppen");
+
+            dobbelenNaEersteKeer(); //test
         }
 
         System.out.println("Programma stopt");
@@ -69,19 +78,39 @@ public class Yahtzee {
             }
     }
 
-//    public void printResultatenDobbelen(){
-//        for (int x = 0; x < 5; x++){
-//            System.out.print(resultatenDobbelen[x] + "  ");
-//        }
-//        System.out.println("");
-//    }
+    public void dobbelenNaEersteKeer(){
+        int i = 0;
+        for (int x = 0; x < 5; x++) {
+            resultatenDobbelen[x] = dobbelsteen.dobbelen();
+            if(vastgelegdeResultaten[x] > 0){
+                resultatenDobbelen[i] = vastgelegdeResultaten[x];
+                i++;
+            }
+            System.out.print(resultatenDobbelen[x] + "  ");
+        }
+    }
+
+    public void printResultatenDobbelen(){
+        System.out.println("Resultaten dobbelen:  ");
+        for (int x = 0; x < 5; x++){
+            System.out.print(resultatenDobbelen[x] + "  ");
+        }
+        System.out.println("");
+    }
 
     public void printVastgelegdeResultaten(){
+        System.out.println("Vastgelegd zijn: ");
         for (int x = 0; x < 5; x++){
             if(vastgelegdeResultaten[x] > 0){
                 System.out.print(vastgelegdeResultaten[x] + "  ");
             }
         }
         System.out.println("");
+    }
+
+    public void resetVastgelegdeResultaten(){
+        for (int x = 0; x < 5; x++){
+            vastgelegdeResultaten[x] = 0;
+        }
     }
 }
