@@ -37,6 +37,7 @@ public class Yahtzee {
         while (doorspelen) {    //logic voor vastleggen van dobbelstenen in array vastGelegdeResultaten
             int dobbelKeer = 1;
             if(dobbelKeer < 4){
+                resetVastgelegdeResultaten(); //reset de vastgelegdewaarden array voordat er nieuwe dobbelstenen vastgezet worden
                 for (int x = 0; x < 5; x++) {
                     boolean vastleggenKeuzeGemaakt = false;
                     System.out.println("Dobbelsteen " + (x + 1) + " met waarde: " + resultatenDobbelen[x] + " vastleggen? 1: ja | 2: nee");
@@ -59,7 +60,7 @@ public class Yahtzee {
                         }
                     }
                 }
-                dobbelKeer++;
+                dobbelKeer++; //volgende keer gooien deze beurt - max 3 per beurt
             }
             System.out.println("==============================");
             System.out.println(dobbelKeer + "e keer dobbelen deze beurt");
