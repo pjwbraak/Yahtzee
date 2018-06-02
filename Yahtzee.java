@@ -14,7 +14,9 @@ public class Yahtzee {
     public void beginSpel() {
 
         System.out.println("Yahtzee!");
+        System.out.println("==============================");
         System.out.println("1e keer dobbelen deze beurt");
+        System.out.println("==============================");
         System.out.println("1: Start eerste gooi | 2: Stop spel");
 
         boolean keuzeGemaakt = false;
@@ -33,9 +35,8 @@ public class Yahtzee {
                 continue; //gaat terug naar begin van loop
             }
         }
-
+        int dobbelKeer = 1;
         while (doorspelen) {    //logic voor vastleggen van dobbelstenen in array vastGelegdeResultaten
-            int dobbelKeer = 1;
             if(dobbelKeer < 4){
                 resetVastgelegdeResultaten(); //reset de vastgelegdewaarden array voordat er nieuwe dobbelstenen vastgezet worden
                 for (int x = 0; x < 5; x++) {
