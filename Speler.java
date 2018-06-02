@@ -3,16 +3,19 @@ package com.company;
 public class Speler {
 
     String naam;
-    Dobbelsteen dobbelsteen = new Dobbelsteen();
 
-    int[] resultatenDobbelen = new int [5];
-    int[] vastgelegdeResultaten = new int[5];
+    int beurt;                                      //welke beurt voor speler
+    int dobbelKeer;                                 //hoeveel keer speler heeft gedobbeld tijdens beurt
+    int[] resultatenDobbelen    = new int [5];      //wat de speler dobbelt
+    int[] vastgelegdeResultaten = new int[5];       //wat de speler vastlegt
+    Dobbelsteen dobbelsteen     = new Dobbelsteen();
 
     Speler(String naam){
         this.naam = naam;
     }
 
-    public void dobbelenEersteKeer(){ //vult array resultatenDobbelen met 5 random waardes voor de eerste keer dobbelen per beurt
+    //array resultatenDobbelen vullen met 5 waarden
+    public void dobbelenEersteKeer(){
         for (int x = 0; x < 5; x++) {
             resultatenDobbelen[x] = dobbelsteen.dobbelen();
             System.out.print(resultatenDobbelen[x] + "  ");
@@ -21,17 +24,19 @@ public class Speler {
 
     public void dobbelenNaEersteKeer(){
         int i = 0;
-
-        for (int x = 0; x < 5; x++) { // nieuwe random waarden invoeren
+        // nieuwe waarden invoeren in resultatenDobbelen
+        for (int x = 0; x < 5; x++) {
             resultatenDobbelen[x] = dobbelsteen.dobbelen();
         }
-        for (int x = 0; x < 5; x++) { // vastgelegde waarden vooraan in array zetten
+        // vastgelegde waarden vooraan in array plaatsen
+        for (int x = 0; x < 5; x++) {
             if (vastgelegdeResultaten[x] > 0) {
                 resultatenDobbelen[i] = vastgelegdeResultaten[x];
                 i++;
             }
         }
-        for (int x = 0; x < 5; x++) { // reeks laten zien
+        //reeks laten zien
+        for (int x = 0; x < 5; x++) {
             System.out.print(resultatenDobbelen[x] + "  ");
         }
         System.out.println();
@@ -42,7 +47,7 @@ public class Speler {
         for (int x = 0; x < 5; x++){
             System.out.print(resultatenDobbelen[x] + "  ");
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public void printVastgelegdeResultaten(){
@@ -52,7 +57,7 @@ public class Speler {
                 System.out.print(vastgelegdeResultaten[x] + "  ");
             }
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public void resetVastgelegdeResultaten(){
