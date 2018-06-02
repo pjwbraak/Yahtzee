@@ -6,7 +6,7 @@ public class Yahtzee {
 
     Dobbelsteen dobbelsteen = new Dobbelsteen();
     Scanner input = new Scanner( System.in );
-    int[] resultatenDobbelen = new int[5];
+    int[] resultatenDobbelen = new int [5];
     int[] vastgelegdeResultaten = new int[5];
     boolean doorspelen = true;
 
@@ -85,12 +85,14 @@ public class Yahtzee {
         for (int x = 0; x < 5; x++) {
             resultatenDobbelen[x] = dobbelsteen.dobbelen();
         }
-
         for (int x = 0; x < 5; x++) {
+
             if (vastgelegdeResultaten[x] > 0) {
                 resultatenDobbelen[i] = vastgelegdeResultaten[x];
                 i++;
             }
+        }
+        for (int x = 0; x < 5; x++) {
             System.out.print(resultatenDobbelen[x] + "  ");
         }
         System.out.println();
