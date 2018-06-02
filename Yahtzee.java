@@ -14,15 +14,16 @@ public class Yahtzee {
     public void beginSpel() {
 
         System.out.println("Yahtzee!");
+        System.out.println("1e keer dobbelen deze beurt");
         System.out.println("1: Start eerste gooi | 2: Stop spel");
 
         boolean keuzeGemaakt = false;
 
-        while(!keuzeGemaakt) {
-            int keuze = input.nextInt(); //moet in de while loop staan anders verandert waarde niet wanneer 1 of 2 niet wordt gekozen = infinite loop
+        while(!keuzeGemaakt) { //start menu
+            int keuze = input.nextInt();
             if (keuze == 1) {
                 dobbelenEersteKeer();
-                System.out.println("");
+                System.out.println();
                 keuzeGemaakt = true;
             } else if (keuze == 2) {
                 doorspelen = false;
@@ -58,15 +59,30 @@ public class Yahtzee {
                         }
                     }
                 }
+                dobbelKeer++;
             }
-            dobbelKeer++;
             System.out.println("==============================");
             System.out.println(dobbelKeer + "e keer dobbelen deze beurt");
+            System.out.println("==============================");
             printVastgelegdeResultaten();
+
             System.out.println("1: Verder dobbelen met niet-vastgelegde dobbelstenen | 2: spel stoppen");
+            boolean volgendeWorp = false;
+            while(!volgendeWorp){
+                int keuze = input.nextInt();
+                if (keuze == 1) {
+                    dobbelenNaEersteKeer();
+                    volgendeWorp = true;
+                } else if(keuze == 2){
+                    doorspelen = false;
+                    volgendeWorp = true;
+                } else {
+                    System.out.println("Ongeldige waarde! 1: verder dobbelen | 2: spel stoppen");
+                    continue;
+                }
+            }
 
-
-            dobbelenNaEersteKeer(); //test
+//            dobbelenNaEersteKeer(); //test
         }
 
         System.out.println("Programma stopt");
@@ -82,17 +98,16 @@ public class Yahtzee {
     public void dobbelenNaEersteKeer(){
         int i = 0;
 
-        for (int x = 0; x < 5; x++) {
+        for (int x = 0; x < 5; x++) { // nieuwe random waarden invoeren
             resultatenDobbelen[x] = dobbelsteen.dobbelen();
         }
-        for (int x = 0; x < 5; x++) {
-
+        for (int x = 0; x < 5; x++) { // vastgelegde waarden vooraan in array zetten
             if (vastgelegdeResultaten[x] > 0) {
                 resultatenDobbelen[i] = vastgelegdeResultaten[x];
                 i++;
             }
         }
-        for (int x = 0; x < 5; x++) {
+        for (int x = 0; x < 5; x++) { // reeks laten zien
             System.out.print(resultatenDobbelen[x] + "  ");
         }
         System.out.println();
