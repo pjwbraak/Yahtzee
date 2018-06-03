@@ -69,10 +69,7 @@ public class Yahtzee {
                 //volgende keer gooien deze beurt - max 3 per beurt
                 speler1.dobbelKeer++;
                 //beurt voorbij?
-                if(speler1.dobbelKeer == 4){
-                    speler1.beurt++;
-                    speler1.dobbelKeer = 1;
-                }
+
                 System.out.println("==============================");
                 System.out.println(speler1.dobbelKeer + "e keer dobbelen voor beurt " + speler1.beurt);
                 System.out.println("==============================");
@@ -80,19 +77,49 @@ public class Yahtzee {
             }
 
             //vragen door te gaan naar volgende keer dobbelen in beurt
-            System.out.println("1: Verder dobbelen met niet-vastgelegde dobbelstenen | 2: spel stoppen");
-            boolean volgendeWorp = false;
-            while(!volgendeWorp){
-                int keuze = input.nextInt();
-                if (keuze == 1) {
-                    speler1.dobbelenNaEersteKeer();
-                    volgendeWorp = true;
-                } else if(keuze == 2){
-                    doorspelen = false;
-                    volgendeWorp = true;
-                } else {
-                    System.out.println("Ongeldige waarde! 1: verder dobbelen | 2: spel stoppen");
-                    continue;
+            if(speler1.dobbelKeer < 3){
+                System.out.println("1: Verder dobbelen met niet-vastgelegde dobbelstenen | 2: spel stoppen");
+                boolean volgendeWorp = false;
+                while(!volgendeWorp) {
+                    int keuze = input.nextInt();
+                    if (keuze == 1) {
+                        speler1.dobbelenNaEersteKeer();
+                        volgendeWorp = true;
+                    } else if (keuze == 2) {
+                        doorspelen = false;
+                        volgendeWorp = true;
+                    } else {
+                        System.out.println("Ongeldige waarde! 1: verder dobbelen | 2: spel stoppen");
+                        continue;
+                    }
+                }
+            }
+
+            //start nieuwe beurt na 3 keer dobbelen
+            if(speler1.dobbelKeer == 3){
+                System.out.println("Waarden dobbelstenen beurt " + speler1.beurt + ":");
+                speler1.dobbelenNaEersteKeer();
+                System.out.println("Einde beurt " + speler1.beurt + "! 1: nieuwe beurt starten | 2: spel stoppen");
+                speler1.dobbelKeer = 1;
+                boolean nieuweBeurt = false;
+                while(!nieuweBeurt){
+                    int keuze = input.nextInt();
+                    if(keuze == 1){
+                        speler1.beurt++;
+                        System.out.println("==============================");
+                        System.out.println("1e keer dobbelen voor beurt " + speler1.beurt);
+                        System.out.println("==============================");
+                        speler1.dobbelenEersteKeer();
+                        System.out.println();
+                        speler1.dobbelKeer = 1;
+                        nieuweBeurt = true;
+                    } else if(keuze == 2){
+                        doorspelen = false;
+                        nieuweBeurt = true;
+                    } else {
+                        System.out.println("Ongeldige waarde! 1: nieuwe beurt | 2: spel stoppen");
+                        continue;
+                    }
                 }
             }
         }
