@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Yahtzee {
@@ -11,14 +12,6 @@ public class Yahtzee {
 
     public void beginSpel() {
 
-        speler1.beurt++;
-        System.out.println("Yahtzee!");
-        System.out.println("==============================");
-        System.out.println("1e keer dobbelen voor beurt " + speler1.beurt);
-        System.out.println("==============================");
-        System.out.println("1: Start eerste gooi | 2: Stop spel");
-
-
         //begin menu
         beginMenu();
 
@@ -28,6 +21,14 @@ public class Yahtzee {
     }
 
     void beginMenu() {
+
+        speler1.beurt++;
+        System.out.println("Yahtzee!");
+        System.out.println("==============================");
+        System.out.println("1e keer dobbelen voor beurt " + speler1.beurt);
+        System.out.println("==============================");
+        System.out.println("1: Start eerste gooi | 2: Stop spel");
+
         boolean keuzeGemaakt = false;
         while (!keuzeGemaakt) {
             int keuze = input.nextInt();
@@ -37,7 +38,7 @@ public class Yahtzee {
                 System.out.println();
                 speler1.dobbelKeer++;
                 keuzeGemaakt = true;
-                //stoppen
+            //stoppen
             } else if (keuze == 2) {
                 doorspelen = false;
                 keuzeGemaakt = true;
@@ -60,7 +61,6 @@ public class Yahtzee {
             //start nieuwe beurt na 3 keer dobbelen
             startNieuweBeurt();
 
-            //score opslaan
         }
         System.out.println("Programma stopt");
     }
@@ -122,7 +122,9 @@ public class Yahtzee {
         if (speler1.dobbelKeer == 3) {
             System.out.println("Waarden dobbelstenen beurt " + speler1.beurt + ":");
 
-            int[] resultaat = speler1.dobbelenNaEersteKeer();
+            speler1.dobbelenNaEersteKeer();
+            //score opslaan
+            speler1.updateScorelijst();
 
             System.out.println("Einde beurt " + speler1.beurt + "! 1: nieuwe beurt starten | 2: spel stoppen");
             speler1.dobbelKeer = 1;

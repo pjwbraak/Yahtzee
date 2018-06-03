@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Speler {
 
     String naam;
@@ -9,6 +11,7 @@ public class Speler {
     int[] resultatenDobbelen    = new int [5];      //wat de speler dobbelt
     int[] vastgelegdeResultaten = new int[5];       //wat de speler vastlegt
     Dobbelsteen dobbelsteen     = new Dobbelsteen();
+    Score resultaten            = new Score();
 
     Speler(String naam){
         this.naam = naam;
@@ -66,6 +69,15 @@ public class Speler {
         for (int x = 0; x < 5; x++){
             vastgelegdeResultaten[x] = 0;
         }
+    }
+
+    public void updateScorelijst(){
+        int[] resultatenDobbelen    = new int [5];
+        for(int x = 0; x < 5; x++){
+            resultatenDobbelen[x] = this.resultatenDobbelen[x];
+        }
+        resultaten.scorelijst.add(resultatenDobbelen);
+        System.out.println(Arrays.deepToString(resultaten.scorelijst.toArray()));
     }
 
 }
