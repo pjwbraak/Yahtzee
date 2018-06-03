@@ -22,7 +22,7 @@ public class Speler {
         }
     }
 
-    public void dobbelenNaEersteKeer(){
+    public int[] dobbelenNaEersteKeer(){
         int i = 0;
         // nieuwe waarden invoeren in resultatenDobbelen
         for (int x = 0; x < 5; x++) {
@@ -40,6 +40,8 @@ public class Speler {
             System.out.print(resultatenDobbelen[x] + "  ");
         }
         System.out.println();
+        //array teruggeven om score op te slaan
+        return resultatenDobbelen;
     }
 
     public void printResultatenDobbelen(){

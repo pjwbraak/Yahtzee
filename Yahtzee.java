@@ -21,6 +21,7 @@ public class Yahtzee {
 
         //begin menu
         beginMenu();
+
         //spelen
         spelSpelen();
 
@@ -58,6 +59,8 @@ public class Yahtzee {
 
             //start nieuwe beurt na 3 keer dobbelen
             startNieuweBeurt();
+
+            //score opslaan
         }
         System.out.println("Programma stopt");
     }
@@ -118,7 +121,9 @@ public class Yahtzee {
     void startNieuweBeurt(){
         if (speler1.dobbelKeer == 3) {
             System.out.println("Waarden dobbelstenen beurt " + speler1.beurt + ":");
-            speler1.dobbelenNaEersteKeer();
+
+            int[] resultaat = speler1.dobbelenNaEersteKeer();
+
             System.out.println("Einde beurt " + speler1.beurt + "! 1: nieuwe beurt starten | 2: spel stoppen");
             speler1.dobbelKeer = 1;
             boolean nieuweBeurt = false;
